@@ -10,6 +10,10 @@ Currently working:
 - Logout;
 - Personal information;
 - Edit personal information;
+
 ... more coming soon.
+
+Known issues:
+- Background color bugged on login and register (working if windows refreshed)
 
 Not yet responsive.
