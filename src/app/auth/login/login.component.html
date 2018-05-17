@@ -1,0 +1,25 @@
+<div class="wrapper">
+  <div class="login-box fx fx--fdc">
+    <div class=" fx">
+      <div class="left-side fx fx--center">
+        <div class="logo-text">
+          <span>TRACK</span>
+          <span>FITNESS</span>
+        </div>
+      </div>
+      <div class="right-side fx fx--center fx--fdc">
+        <form [formGroup]="signinForm" class="login-form fx fx--fdc">
+          <input placeholder="Email" type="email" formControlName='email'>
+          <input placeholder="Password" type="password" formControlName='password'>
+          <button class="btn" [disabled]="signinForm.invalid || isLoading" (click)="login(signinForm.value)">LOGIN</button>
+        </form>
+        <div class="register" routerLink="/register">
+          Create new account
+        </div>
+      </div>
+    </div>
+    <div class="error fx fx--center" *ngIf="error">
+      {{ error }}
+    </div>
+  </div>
+</div>

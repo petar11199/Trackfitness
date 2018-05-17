@@ -1,0 +1,51 @@
+<div class="navigation fx fx--fdc">
+  <div class="personal-info fx fx--fdc">
+    <span routerLink="/profile" class="edit">EDIT</span>
+    <div *ngIf="isLoading; else loaded">
+      <div class="image loading-img"></div>
+      <h1 class="name loading"></h1>
+      <span class="age loading"></span>
+    </div>
+    <ng-template #loaded>
+      <img class="image" src="./assets/images/navigation/profile.png">
+      <h1 class="name">{{ user?.name }}</h1>
+      <span class="age">{{ user?.gender }}, {{ user?.age }} years</span>
+    </ng-template>
+  </div>
+  <hr>
+  <div class="physical-info fx">
+    <div class="info-box fx fx--fdc fx--center">
+      <h1 class="height-title">HEIGHT</h1>
+      <span *ngIf="!isLoading && !user?.height">n/a</span>
+      <span *ngIf="!isLoading">{{ user?.height }}</span>
+      <span *ngIf="isLoading" class="loading"></span>
+      <!-- <span><b>185</b> cm</span> -->
+    </div>
+    <div class="info-box fx fx--fdc fx--center">
+      <h1 class="height-title">WEIGHT</h1>
+      <span *ngIf="!isLoading && !user?.weight">n/a</span>
+      <span *ngIf="!isLoading">{{ user?.weight }}</span>
+      <span *ngIf="isLoading" class="loading"></span>
+      <!-- <span><b>176</b> kg</span> -->
+    </div>
+  </div>
+  <hr>
+  <div class="navigation-links fx fx--fdc">
+    <div class="navigation-link fx">
+      <img src="./assets/images/navigation/home.png">
+      <span class="active">Home</span>
+    </div>
+    <div class="navigation-link fx">
+      <img src="./assets/images/navigation/goals.png">
+      <span>My goals</span>
+    </div>
+    <div class="navigation-link fx">
+      <img src="./assets/images/navigation/schedule.png">
+      <span>Schedule</span>
+    </div>
+  </div>
+  <div class="welcome">
+    <h1>WELCOME {{ onlyName }}</h1>
+    <span>This is your fitness dashboard</span>
+  </div>
+</div>

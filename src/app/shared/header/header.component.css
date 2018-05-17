@@ -1,0 +1,30 @@
+.header {
+    width: 100%;
+    background: white;
+    height: 50px;
+    box-shadow: 10px 10px 10px rgba(237, 239, 241, 0.3);
+    justify-content: space-between;
+}
+.logo-text {
+    font-size: 20px;
+    margin-left: 40px;
+    cursor: pointer;
+}
+.logo-text span:last-child {
+    font-weight: 700;
+}
+
+.settings {
+    margin-right: 40px;
+}
+
+img {
+    height: 20px;
+    cursor: pointer;
+}
+img:hover {
+    transform: rotate(5deg);
+}
+img:last-child {
+    margin-left: 20px;
+}
