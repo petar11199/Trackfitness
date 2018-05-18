@@ -23,6 +23,7 @@ export class UserProfileComponent implements OnInit {
     private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.isLoading = true;
 
     this.personalInfo = this.fb.group({
       name: [''],
@@ -42,6 +43,7 @@ export class UserProfileComponent implements OnInit {
       res => {
         this.user = res[this.userId];
         this.personalInfo.patchValue(this.user);
+        this.isLoading = false;
       })
   }
 

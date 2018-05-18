@@ -15,6 +15,7 @@
   </div>
   <div class="input-info">
     <span class="infoTitle">Edit your personal information here</span>
+    <ng-template #loadedInputs>
     <form [formGroup]="personalInfo">
       <span class="inputTitle">Name</span>
       <input placeholder="Name" type="text" formControlName="name">
@@ -45,5 +46,30 @@
         </div>
       </div>
     </form>
+    </ng-template>
+
+    <div *ngIf="isLoading; else loadedInputs">
+      <span class="inputTitle">Name</span>
+      <input class="loading">
+
+      <span class="inputTitle">Email</span>
+      <input class="loading">
+
+      <span class="inputTitle">Age</span>
+      <input class="loading">
+
+      <span class="inputTitle">Short bio</span>
+      <textarea rows="5" class="loading"></textarea>
+      <div class="fx">
+        <div class="inLine">
+          <span class="inputTitle">Your height</span>
+          <input class="loading">
+        </div>
+        <div>
+          <span class="inputTitle">Your weight</span>
+          <input class="loading">
+        </div>
+      </div>
+    </div>
   </div>
 </div>
