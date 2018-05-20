@@ -1,0 +1,140 @@
+.wrapper {
+    border-radius: 10px;
+    margin: 40px;
+    margin-left: 0;
+    width: 100%;
+    overflow-x: hidden;
+    background: white;
+    height: 100%;
+}
+.heading {
+    background: linear-gradient(90deg, #4FACFE, #00F2FE);
+    animation: heading 400ms ease-in;
+}
+.menu {
+    justify-content: space-between;
+}
+.back-btn {
+    width: 30px;
+    height: 25px;
+    padding: 20px;
+    cursor: pointer;
+}
+.btn {
+    margin-top: 20px;
+    width: 100px;
+    height: 30px;
+    padding: 3px;
+    cursor: pointer;
+}
+.btn-new {
+    margin-right: 20px;
+}
+.card {
+    background: red;
+    border-radius: 10px;
+    height: 150px;
+    width: 100%;
+    flex-shrink: 0;
+    margin-right: 20px;
+    margin-bottom: 5px;
+    padding: 20px;
+    background: transparent;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+.right-side-card {
+    margin-right: 70px;
+}
+.left-side-card img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+}
+
+.left-side-card h1 {
+    margin: 0;
+    font-size: 20px;
+    color: white;
+}
+.left-side-card span {
+    margin: 0;
+    font-size: 18px;
+    color: white;
+}
+.right-side-card .count {
+    color: white;
+}
+.right-side-card .count span {
+    margin: 0;
+    padding: 0;
+}
+.right-side-card .count span:first-child {
+    font-size: 40px;
+}
+
+.boxes {
+    flex-wrap: wrap;
+    height: 350px;
+    overflow-y: scroll;
+}
+.box {
+    width: 29%;
+    margin: 2%;
+    height: auto;
+    border: 1px solid rgb(226, 226, 226);
+    border-radius: 10px;
+}
+.box-image {
+    background-image: url(../../../assets/images/backgrounds/login-bg.jpg);
+    background-size: cover;
+    height: 150px;
+    border-radius: 10px 10px 0 0;
+}
+.box-body {
+    padding: 20px;
+    color: #262626;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.box-body h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 22px;
+    font-weight: 400;
+}
+.box-body span {
+    font-size: 14px;
+}
+
+.confirm {
+    text-align: center;
+}
+.isDeleted {
+    animation: isDeleted 1s ease;
+}
+
+.emptyScreen {
+    text-align: center;
+    height: 350px;
+}
+.emptyScreen h1 {
+    margin: 0;
+    font-size: 18px;
+    opacity: 0.6;
+}
+.emptyScreen .btn {
+    width: 150px;
+}
+
+
+@keyframes heading {
+    from {opacity: 0.6;}
+    to {opacity: 1;}
+}
+
+@keyframes isDeleted {
+    0% {opacity: 1;}
+    50% {opacity: 0.3;}
+    100% {opacity: 0;}
+}

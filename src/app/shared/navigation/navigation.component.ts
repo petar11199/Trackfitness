@@ -26,7 +26,6 @@ export class NavigationComponent implements OnInit {
     this.isLoading = true;
     this.afAuth.authState.subscribe(user => {
       if(user) this.userId = user.uid;
-      console.log(this.userId)
     })
 
     this.db.object(`/users`).valueChanges().subscribe(

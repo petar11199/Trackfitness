@@ -1,0 +1,57 @@
+.wrapper {
+    border-radius: 10px;
+    margin: 40px;
+    margin-left: 0;
+    width: 100%;
+    overflow-x: hidden;
+    background: white;
+    height: 100%;
+}
+.heading {
+    background: linear-gradient(90deg, #4FACFE, #00F2FE);
+    animation: heading 400ms ease-in;
+    padding: 20px;
+}
+.heading h1 {
+    margin: 0;
+    margin-top: 20px;
+    font-size: 22px;
+    color: white;
+}
+.back-btn {
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.form {
+    padding: 20px;
+}
+textarea {
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+    background: transparent;
+    padding-bottom: 5px;
+    width: 100%;
+}
+.btn {
+    width: 100px;
+}
+
+.time {
+    width: 150px;
+    position: relative;
+    display: inline-block;
+}
+.time-min {
+    font-size: 14px;
+}
+.inputTitle {
+    display: block;
+}
+
+@keyframes heading {
+    from {opacity: 0.6;}
+    to {opacity: 1;}
+}

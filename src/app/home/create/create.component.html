@@ -1,0 +1,32 @@
+<app-header></app-header>
+
+<div class="fx">
+  <app-navigation></app-navigation>
+
+  <div class="wrapper">
+    <div class="heading">
+      <img class="back-btn" src="./assets/images/home/arrow.png" routerLink="/home/exercises">
+      <h1>Create new exercise</h1>
+    </div>
+
+    <div class="form">
+      <form [formGroup]="exerciseForm">
+        <span class="inputTitle">Name</span>
+        <input placeholder="Name" type="text" formControlName="name" maxlength="20">
+
+        <span class="inputTitle">Time</span>
+        <input class="time" placeholder="Time" type="number" formControlName="time" min="1">
+        <span class="time-min">min</span>
+  
+        <span class="inputTitle">Short description</span>
+        <input placeholder="Short description" type="email" formControlName="shortDesc" maxlength="40">
+  
+        <span class="inputTitle">Long description</span>
+        <textarea formControlName="longDesc" rows="5"></textarea>
+        <div class="fx fx--between">
+          <button [disabled]="exerciseForm.invalid" class="btn" (click)="addNewExercise(exerciseForm.value)">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

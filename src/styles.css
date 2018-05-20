@@ -37,7 +37,7 @@ input {
 }
 
 .btn {
-    background-color: #FF527A;
+    background-color: #26D1FE;
     border: none;
     padding: 8px 0;
     color: #F3F5F7;
@@ -45,15 +45,25 @@ input {
 }
 .btn:hover {
     cursor: pointer;
-    background-color: rgb(255, 97, 134);
+    background-color: rgb(36, 190, 233);
 }
 .btn:disabled {
     opacity: 0.5;
 }
 .btn:disabled:hover{
     cursor: default;
-    background-color: #FF527A;
+    background-color: rgb(36, 190, 233);
 }
+.btn--del {
+    background: transparent;
+    border: 1px solid rgb(255, 97, 134);
+    color: rgb(255, 97, 134);
+}
+.btn--del:hover {
+    background: rgb(255, 97, 134);
+    color: white;
+}
+
 input:focus {
     outline-width: 0;
 }
