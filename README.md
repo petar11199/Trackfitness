@@ -11,6 +11,9 @@ Currently working:
 - Personal information;
 - Edit personal information;
 - Loading
+- Create new exercise
+- Delete existing exercise
+- Listing with all the information
 
 ... more coming soon.
 
