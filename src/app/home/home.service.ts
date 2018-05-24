@@ -31,4 +31,8 @@ export class HomeService {
     return this.db.list(`users/${userId}/exercises`).remove(key);
   }
 
+  finishExercise(userId, key) {
+    return this.db.object(`users/${userId}/exercises/${key}`).update({finished: Number(1)})
+  }
+
 }

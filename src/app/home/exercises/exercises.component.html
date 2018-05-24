@@ -16,14 +16,15 @@
                   <h1 *ngIf="exercises.length > 1">{{ exercises.length }} Exercises</h1>
                   <h1 *ngIf="exercises.length === 1">{{ exercises.length }} Exercise</h1>
                   <h1 *ngIf="exercises.length === 0">No Exercises</h1>
-                  <span *ngIf="numOfMinutes.length !== 0">{{ numOfMinutes }} minutes</span>
-                  <span *ngIf="numOfMinutes.length === 0">0 minutes</span>
+                  <span *ngIf="numOfMinutes">{{ numOfMinutes }} minutes</span>
+                  <span *ngIf="!numOfMinutes">0 minutes</span>
               </div>
           </div>
           <div class="right-side-card fx fx--center">
               <div class="count">
-                  <span>0</span>
-                  <span>/{{ exercises.length }}</span>
+                  <span *ngIf="numbOfFinished">{{ numbOfFinished }}</span>
+                  <span *ngIf="!numbOfFinished">0</span>
+                  <span>/{{ exercises.length }} finished</span>
               </div>
           </div>
         </div>
@@ -36,13 +37,13 @@
 
       <ng-template #show>
         <div class="boxes fx">
-          <div *ngFor="let exercise of exercises; let i of index" class="box" [class.isDeleted]="deletedItem === i">
+          <div *ngFor="let exercise of exercises; let i of index" class="box" [class.isDeleted]="deletedItem === i" [class.isFinished]="exercise.finished === 1">
             <div class="box-image"></div>
             <div class="box-body">
               <h1>{{exercise?.name}}</h1>
               <span>{{exercise?.shortDesc}}</span>
               <div class="fx fx--between">
-                <button class="btn">Finish</button>
+                <button class="btn" (click)="finishExcersise(exercise.key)">Finish</button>
                 <button class="btn btn--del" (click)="deleteExcersise(exercise.key, i)">Delete</button>
               </div>
             </div>

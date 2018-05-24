@@ -9,28 +9,30 @@ import { Subscription } from 'rxjs';
 })
 export class ExercisesComponent implements OnInit, OnDestroy {
 
+  userId: string;
+  exercises: any[] = [];
+  subscription: Subscription;
+
+  numbOfFinished: any;
+  numOfMinutes: number;
   deletedItem: any;
   isDeleted: boolean;
-  numOfMinutes: any[] = [];
-  exercises: any[] = [];
-  userId: string;
-
-  subscription: Subscription;
 
   constructor(private homeService: HomeService) {}
 
   ngOnInit() {
-    let temp = [];
-
     this.subscription = this.homeService.getUserId().subscribe(res => {
       this.userId = res;
       this.homeService.getExercisesList(this.userId).subscribe(res => {
-        console.log(res)
         this.exercises = Object.values(res);
+        this.numOfMinutes = 0;   // reseting sum
+        this.numbOfFinished = 0; // reseting sum
         this.exercises.forEach(element => {
-          temp.push(element.time);
-          this.numOfMinutes = temp.reduce((acc, val) => { return acc + val });
-        });
+          this.numOfMinutes += element.time;
+          if(element.finished) {
+            this.numbOfFinished += element.finished;
+          }
+        })
       });
     });
   }
@@ -45,6 +47,10 @@ export class ExercisesComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.homeService.deleteExercise(this.userId, key);
     }, 1000);
+  }
+
+  finishExcersise(key) {
+    this.homeService.finishExercise(this.userId, key);
   }
 
   ngOnDestroy() {

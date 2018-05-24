@@ -11,6 +11,7 @@ import { HomeService } from './../home.service';
 })
 export class CreateComponent implements OnInit, OnDestroy {
 
+  timeValue: number;
   exerciseForm: FormGroup;
   subscription: Subscription;
 
