@@ -35,6 +35,8 @@ input {
     padding-bottom: 5px;
     width: 100%;
 }
+:focus {outline:0;}
+
 
 .btn {
     background-color: #26D1FE;

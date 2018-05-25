@@ -25,7 +25,7 @@ export class CreateComponent implements OnInit, OnDestroy {
     this.exerciseForm = this.fb.group({
       name: ['', [Validators.required]],
       shortDesc: ['', [Validators.required]],
-      longDesc: ['', [Validators.required]],
+      longDesc: [''],
       time: ['', [Validators.required]]
     })
   }

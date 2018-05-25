@@ -7,13 +7,15 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class AwardPopupComponent implements OnInit {
 
+  @Output() awardedClosed = new EventEmitter<boolean>();
   @Input() awarded: boolean;
   @Input() awardName: string;
-  @Output() awardedClosed = new EventEmitter<boolean>();
+  @Input() awardDesc: string;
+
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
+  
   closeWindow() {
     this.awarded = false;
     this.awardedClosed.emit(this.awarded);

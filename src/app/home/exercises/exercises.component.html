@@ -1,5 +1,11 @@
 <app-header></app-header>
-<app-award-popup [awardName]="awardName" [awarded]="awarded" (awardedClosed)="receivedMessage($event)"></app-award-popup>
+<app-award-popup 
+  [awardDesc]="awardDesc" 
+  [awardName]="awardName" 
+  [awarded]="awarded" 
+  (awardedClosed)="receivedMessage($event)">
+</app-award-popup>
+
 <div class="fx">
   <app-navigation></app-navigation>
 
@@ -44,7 +50,9 @@
 
     <ng-template #show>
       <div class="boxes fx">
-        <div *ngFor="let exercise of exercises; let i of index" class="box" [class.isDeleted]="deletedItem === i" [class.isFinished]="exercise.finished === 1">
+        <div *ngFor="let exercise of exercises; let i of index" class="box" 
+          [class.isDeleted]="deletedItem === i" 
+          [class.isFinished]="exercise.finished === 1">
           <div class="box-image fx fx--center">{{exercise?.time}} minutes</div>
           <div class="box-body">
             <h1>{{exercise?.name}}</h1>

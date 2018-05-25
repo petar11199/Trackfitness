@@ -1,3 +1,4 @@
+import { AwardService } from './../../shared/award.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HomeService } from './../home.service';
 import { Subscription } from 'rxjs';
@@ -9,19 +10,22 @@ import { Subscription } from 'rxjs';
 })
 export class ExercisesComponent implements OnInit, OnDestroy {
 
-  awarded: boolean;
-  awardName: string;
-  firstAward: boolean;
-  isLoading: boolean;
-  userId: string;
-  exercises: any[] = [];
   subscription: Subscription;
+  exercises: any[] = [];
+  userId: string;
+  isLoading: boolean;
 
-  numbOfFinished: any;
+  awarded: boolean;
+  awardDesc: string;
+  awardName: string;
+
+  numbOfFinished: number;
   numOfMinutes: number;
   deletedItem: any;
 
-  constructor(private homeService: HomeService) { }
+  constructor(
+    private homeService: HomeService,
+    private awardService: AwardService) { }
 
   ngOnInit() {
     this.isLoading = true;
@@ -40,7 +44,6 @@ export class ExercisesComponent implements OnInit, OnDestroy {
       });
       this.isLoading = false;
     });
-
   }
 
   deleteExcersise(key, index) {
@@ -55,45 +58,28 @@ export class ExercisesComponent implements OnInit, OnDestroy {
   }
 
   finishExcersise(key) {
+    let awards = this.awardService.getAllAwards();
+
     this.homeService.finishExercise(this.userId, key);
-    this.homeService.getAwards(this.userId).subscribe(res => {
-      let awardName;
-      if (this.numbOfFinished === 1) {
-        if (res.find(award => (award.key === "firstExercise"))) {
-        } else {
-          awardName = 'firstExercise'
-          this.homeService.addAward(this.userId, awardName).then(() => {
-            this.awardName = 'firstExercise';
-            this.awarded = true;
-          });
+    this.subscription = this.awardService.getAwards(this.userId).subscribe(res => {
+      awards.forEach(award => {
+        if (this.numbOfFinished === award.finished) {
+          if (res.find(r => (r.key === award.awardName))) { }
+          else {
+            this.awardService.addAward(this.userId, award.awardName).then(() => {
+              this.awardName = award.awardName;
+              this.awardDesc = award.description;
+              this.awarded = true;
+            })
+          }
         }
-      }
-
-      if (this.numbOfFinished === 5) {
-        if (res.find(award => (award.key === "fifthExercise"))) {
-        } else {
-
-          awardName = 'fifthExercise'
-          this.homeService.addAward(this.userId, awardName).then(() => {
-            this.awardName = 'fifthExercise';
-            this.awarded = true;
-          });
-        }
-      }
-
-      if (this.numbOfFinished === 3) {
-        this.awardName = 'test';
-        this.awarded = true;
-      }
-    })
-
+      });
+    });
   }
-
 
   receivedMessage($event) {
     this.awarded = $event;
   }
-
 
   ngOnDestroy() {
     if (this.subscription) {
