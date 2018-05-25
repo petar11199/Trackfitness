@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoaderComponent } from './loader/loader.component';
 import { RouterModule } from '@angular/router';
+import { TimePipe } from './time.pipe';
+import { AwardPopupComponent } from './award-popup/award-popup.component';
 
 
 @NgModule({
@@ -14,12 +16,18 @@ import { RouterModule } from '@angular/router';
   declarations: [
     HeaderComponent,
     NavigationComponent,
-    LoaderComponent
+    LoaderComponent,
+    TimePipe,
+    AwardPopupComponent
   ],
   exports: [
     HeaderComponent,
-    NavigationComponent
+    NavigationComponent,
+    AwardPopupComponent,
+    TimePipe
   ],
-  providers: []
+  providers: [
+    TimePipe
+  ]
 })
 export class SharedModule { }

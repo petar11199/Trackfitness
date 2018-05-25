@@ -1,0 +1,55 @@
+.wrapper {
+    position: absolute;
+    z-index: 99999;
+}
+.popup {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: url(../../../assets/images/backgrounds/awards-bg.jpg);
+    color: white;
+    background-size: cover;
+    text-align: center;
+    border-radius: 10px;
+    padding: 70px 100px;
+    position: fixed;
+    z-index: 9999;
+    outline: dashed;
+    outline-offset: -12px;
+    animation: fade 500ms ease forwards;
+}
+h1 {
+    margin: 0;
+    animation: slide 1s ease forwards;
+}
+h2 {
+    animation: slide 1s ease forwards;
+}
+
+span {
+    animation: slide 1s ease forwards;
+}
+
+.btn {
+    margin-top: 20px;
+}
+
+@keyframes slide {
+    from {
+        padding-bottom: 10px;
+        opacity: 0;
+    }
+    to {
+        padding-bottom: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.9;
+    }
+}

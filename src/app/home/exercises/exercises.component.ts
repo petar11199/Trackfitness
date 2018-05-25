@@ -9,6 +9,10 @@ import { Subscription } from 'rxjs';
 })
 export class ExercisesComponent implements OnInit, OnDestroy {
 
+  awarded: boolean;
+  awardName: string;
+  firstAward: boolean;
+  isLoading: boolean;
   userId: string;
   exercises: any[] = [];
   subscription: Subscription;
@@ -16,11 +20,11 @@ export class ExercisesComponent implements OnInit, OnDestroy {
   numbOfFinished: any;
   numOfMinutes: number;
   deletedItem: any;
-  isDeleted: boolean;
 
-  constructor(private homeService: HomeService) {}
+  constructor(private homeService: HomeService) { }
 
   ngOnInit() {
+    this.isLoading = true;
     this.subscription = this.homeService.getUserId().subscribe(res => {
       this.userId = res;
       this.homeService.getExercisesList(this.userId).subscribe(res => {
@@ -29,21 +33,22 @@ export class ExercisesComponent implements OnInit, OnDestroy {
         this.numbOfFinished = 0; // reseting sum
         this.exercises.forEach(element => {
           this.numOfMinutes += element.time;
-          if(element.finished) {
+          if (element.finished) {
             this.numbOfFinished += element.finished;
           }
         })
       });
+      this.isLoading = false;
     });
+
   }
 
   deleteExcersise(key, index) {
-    if(this.deletedItem === index) {
+    if (this.deletedItem === index) {
       this.deletedItem = null;
     } else {
       this.deletedItem = index;
     }
-    this.isDeleted = true;
     setTimeout(() => {
       this.homeService.deleteExercise(this.userId, key);
     }, 1000);
@@ -51,10 +56,47 @@ export class ExercisesComponent implements OnInit, OnDestroy {
 
   finishExcersise(key) {
     this.homeService.finishExercise(this.userId, key);
+    this.homeService.getAwards(this.userId).subscribe(res => {
+      let awardName;
+      if (this.numbOfFinished === 1) {
+        if (res.find(award => (award.key === "firstExercise"))) {
+        } else {
+          awardName = 'firstExercise'
+          this.homeService.addAward(this.userId, awardName).then(() => {
+            this.awardName = 'firstExercise';
+            this.awarded = true;
+          });
+        }
+      }
+
+      if (this.numbOfFinished === 5) {
+        if (res.find(award => (award.key === "fifthExercise"))) {
+        } else {
+
+          awardName = 'fifthExercise'
+          this.homeService.addAward(this.userId, awardName).then(() => {
+            this.awardName = 'fifthExercise';
+            this.awarded = true;
+          });
+        }
+      }
+
+      if (this.numbOfFinished === 3) {
+        this.awardName = 'test';
+        this.awarded = true;
+      }
+    })
+
   }
 
+
+  receivedMessage($event) {
+    this.awarded = $event;
+  }
+
+
   ngOnDestroy() {
-    if(this.subscription) {
+    if (this.subscription) {
       this.subscription.unsubscribe();
     }
   }

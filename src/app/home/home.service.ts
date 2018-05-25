@@ -32,7 +32,18 @@ export class HomeService {
   }
 
   finishExercise(userId, key) {
-    return this.db.object(`users/${userId}/exercises/${key}`).update({finished: Number(1)})
+    return this.db.object(`users/${userId}/exercises/${key}`).update({finished: Number(1)});
+  }
+
+  getAwards(userId) {
+    return this.db.list(`users/${userId}/awards`).snapshotChanges().map(changes => {
+      return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+    });
+  }
+  addAward(userId, award) {
+    var obj = {};
+    obj[award] = true;
+    return this.db.object(`users/${userId}/awards`).update(obj);
   }
 
 }

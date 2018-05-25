@@ -1,54 +1,62 @@
 <app-header></app-header>
-
+<app-award-popup [awardName]="awardName" [awarded]="awarded" (awardedClosed)="receivedMessage($event)"></app-award-popup>
 <div class="fx">
-    <app-navigation></app-navigation>
+  <app-navigation></app-navigation>
 
-    <div class="wrapper">
-      <div class="heading">
-        <div class="menu fx">
-          <img class="back-btn" src="./assets/images/home/arrow.png" routerLink="/home">
-          <button class="btn btn-new" routerLink="/home/create" *ngIf="exercises.length !== 0">+ Add new</button>
-        </div>
-        <div class="card fx">
-          <div class="left-side-card">
-              <img src="./assets/images/home/weight.png">
-              <div>
-                  <h1 *ngIf="exercises.length > 1">{{ exercises.length }} Exercises</h1>
-                  <h1 *ngIf="exercises.length === 1">{{ exercises.length }} Exercise</h1>
-                  <h1 *ngIf="exercises.length === 0">No Exercises</h1>
-                  <span *ngIf="numOfMinutes">{{ numOfMinutes }} minutes</span>
-                  <span *ngIf="!numOfMinutes">0 minutes</span>
-              </div>
+  <div class="wrapper">
+    <div class="heading">
+      <div class="menu fx">
+        <img class="back-btn" src="./assets/images/home/arrow.png" routerLink="/home">
+        <button class="btn btn-new" routerLink="/home/create" *ngIf="exercises.length !== 0">+ Add new</button>
+      </div>
+      <div class="card fx">
+        <div class="left-side-card">
+          <img src="./assets/images/home/weight.png">
+          <div *ngIf="isLoading; else loaded">
+            <h1 class="loading"></h1>
+            <h1 class="loading"></h1>
           </div>
-          <div class="right-side-card fx fx--center">
-              <div class="count">
-                  <span *ngIf="numbOfFinished">{{ numbOfFinished }}</span>
-                  <span *ngIf="!numbOfFinished">0</span>
-                  <span>/{{ exercises.length }} finished</span>
-              </div>
+          <ng-template #loaded>
+            <div>
+              <h1 *ngIf="exercises.length > 1">{{ exercises.length }} Exercises</h1>
+              <h1 *ngIf="exercises.length === 1">{{ exercises.length }} Exercise</h1>
+              <h1 *ngIf="exercises.length === 0">No Exercises</h1>
+              <span *ngIf="numOfMinutes">{{ numOfMinutes | time }} minutes</span>
+              <span *ngIf="!numOfMinutes">0 minutes</span>
+            </div>
+          </ng-template>
+        </div>
+        <div class="right-side-card fx fx--center">
+          <div [class.loading]="isLoading" *ngIf="exercises.length" class="count">
+            <span *ngIf="numbOfFinished">{{ numbOfFinished }}</span>
+            <span *ngIf="!numbOfFinished">0</span>
+            <span>/{{ exercises.length }} finished</span>
           </div>
         </div>
       </div>
+    </div>
 
-      <div *ngIf="exercises.length === 0; else show" class="emptyScreen fx fx--center fx--fdc">
-        <h1>You don't have any exercises added :(</h1>
-        <button class="btn" routerLink="/home/create">+ Add them now</button>
-      </div>
+    <div *ngIf="exercises.length === 0 && !isLoading; else show" class="emptyScreen fx fx--center fx--fdc">
+      <h1>You don't have any exercises added :(</h1>
+      <button class="btn" routerLink="/home/create">+ Add them now</button>
+    </div>
 
-      <ng-template #show>
-        <div class="boxes fx">
-          <div *ngFor="let exercise of exercises; let i of index" class="box" [class.isDeleted]="deletedItem === i" [class.isFinished]="exercise.finished === 1">
-            <div class="box-image"></div>
-            <div class="box-body">
-              <h1>{{exercise?.name}}</h1>
-              <span>{{exercise?.shortDesc}}</span>
-              <div class="fx fx--between">
-                <button class="btn" (click)="finishExcersise(exercise.key)">Finish</button>
-                <button class="btn btn--del" (click)="deleteExcersise(exercise.key, i)">Delete</button>
-              </div>
+
+    <ng-template #show>
+      <div class="boxes fx">
+        <div *ngFor="let exercise of exercises; let i of index" class="box" [class.isDeleted]="deletedItem === i" [class.isFinished]="exercise.finished === 1">
+          <div class="box-image fx fx--center">{{exercise?.time}} minutes</div>
+          <div class="box-body">
+            <h1>{{exercise?.name}}</h1>
+            <span>{{exercise?.shortDesc}}</span>
+            <div class="fx fx--between fx--center">
+              <button *ngIf="!exercise.finished" class="btn" (click)="finishExcersise(exercise.key)">Finish</button>
+              <div *ngIf="exercise.finished" class="finished-text">Finished</div>
+              <button class="btn btn--del" (click)="deleteExcersise(exercise.key, i)">Delete</button>
             </div>
           </div>
-        </div>        
-      </ng-template>
-    </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
 </div>

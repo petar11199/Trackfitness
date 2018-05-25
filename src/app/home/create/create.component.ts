@@ -11,6 +11,7 @@ import { HomeService } from './../home.service';
 })
 export class CreateComponent implements OnInit, OnDestroy {
 
+  isLoading: boolean;
   timeValue: number;
   exerciseForm: FormGroup;
   subscription: Subscription;
@@ -30,6 +31,7 @@ export class CreateComponent implements OnInit, OnDestroy {
   }
 
   addNewExercise(formValue) {
+    this.isLoading = true;
     let userId: string;
     this.subscription = this.homeService.getUserId().subscribe(res => {
       userId = res;

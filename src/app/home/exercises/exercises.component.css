@@ -86,10 +86,12 @@
     border-radius: 10px;
 }
 .box-image {
-    background-image: url(../../../assets/images/backgrounds/login-bg.jpg);
+    background-image: url(../../../assets/images/backgrounds/exercises.png);
     background-size: cover;
     height: 150px;
     border-radius: 10px 10px 0 0;
+    color: white;
+    font-size: 24px;
 }
 .box-body {
     padding: 20px;
@@ -116,6 +118,11 @@
 .isFinished {
     opacity: 0.5;
 }
+.finished-text {
+    font-size: 14px;
+    color: #39FB90;
+}
+
 
 .emptyScreen {
     text-align: center;

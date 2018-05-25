@@ -24,7 +24,7 @@
         <span class="inputTitle">Long description</span>
         <textarea formControlName="longDesc" rows="5"></textarea>
         <div class="fx fx--between">
-          <button [disabled]="exerciseForm.invalid" class="btn" (click)="addNewExercise(exerciseForm.value)">Save</button>
+          <button [disabled]="exerciseForm.invalid && isLoading" class="btn" (click)="addNewExercise(exerciseForm.value)" >Save</button>
         </div>
       </form>
     </div>
