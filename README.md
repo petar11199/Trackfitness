@@ -14,6 +14,7 @@ Currently working:
 - Create new exercise
 - Delete existing exercise
 - Listing with all the information
+- Awards ( so far only 2 awards. 1 is for completing first exercise, 2 is for completing 5 exercises. )
 
 ... more coming soon.
 
