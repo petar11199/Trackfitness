@@ -4,14 +4,14 @@ import { HomeService } from './../home.service';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-exercises',
-  templateUrl: './exercises.component.html',
-  styleUrls: ['./exercises.component.css']
+  selector: 'app-meals',
+  templateUrl: './meals.component.html',
+  styleUrls: ['./meals.component.css']
 })
-export class ExercisesComponent implements OnInit, OnDestroy {
+export class MealsComponent implements OnInit, OnDestroy {
 
   subscription: Subscription;
-  exercises: any[] = [];
+  meals: any[] = [];
   userId: string;
   isLoading: boolean;
 
@@ -20,7 +20,7 @@ export class ExercisesComponent implements OnInit, OnDestroy {
   awardName: string;
 
   numbOfFinished: number;
-  numOfMinutes: number;
+  numOfCals: number;
   deletedItem: any;
 
   constructor(
@@ -31,12 +31,12 @@ export class ExercisesComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     this.subscription = this.homeService.getUserId().subscribe(res => {
       this.userId = res;
-      this.homeService.getList(this.userId, 'exercises').subscribe(res => {
-        this.exercises = Object.values(res);
-        this.numOfMinutes = 0;   // reseting sum
+      this.homeService.getList(this.userId, 'meals').subscribe(res => {
+        this.meals = Object.values(res);
+        this.numOfCals = 0;   // reseting sum
         this.numbOfFinished = 0; // reseting sum
-        this.exercises.forEach(element => {
-          this.numOfMinutes += element.time;
+        this.meals.forEach(element => {
+          this.numOfCals += element.time;
           if (element.finished) {
             this.numbOfFinished += element.finished;
           }
@@ -53,17 +53,17 @@ export class ExercisesComponent implements OnInit, OnDestroy {
       this.deletedItem = index;
     }
     setTimeout(() => {
-      this.homeService.delete(this.userId, key, 'exercises');
+      this.homeService.delete(this.userId, key, 'meals');
     }, 1000);
   }
 
   finishExcersise(key) {
     let awards = this.awardService.getAllAwards();
 
-    this.homeService.finish(this.userId, key, 'exercises');
+    this.homeService.finish(this.userId, key, 'meals');
     this.subscription = this.awardService.getAwards(this.userId).subscribe(res => {
       awards.forEach(award => {
-        if (this.numbOfFinished === award.finished) {
+        if (this.numbOfFinished === award.finishedMeal) {
           if (res.find(r => (r.key === award.awardName))) { }
           else {
             this.awardService.addAward(this.userId, award.awardName).then(() => {

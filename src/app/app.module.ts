@@ -1,3 +1,4 @@
+import { AwardsModule } from './awards/awards.module';
 import { SharedModule } from './shared/shared.module';
 import { appRouting } from './app.routing';
 import { AuthModule } from './auth/auth.module';
@@ -10,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
+import { AwardsComponent } from './awards/awards.component';
 
 
 @NgModule({
@@ -23,6 +25,7 @@ import { environment } from '../environments/environment';
     AngularFireAuthModule,
     AuthModule,
     SharedModule,
+    AwardsModule,
     appRouting
   ],
   providers: [],

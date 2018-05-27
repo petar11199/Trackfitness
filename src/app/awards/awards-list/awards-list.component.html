@@ -1,0 +1,19 @@
+<app-header></app-header>
+
+<div class="fx">
+  <app-navigation></app-navigation>
+
+  <div class="wrapper">
+    <div class="title">
+      <span>AWARDS</span>
+      <h1>Your Awards</h1>
+    </div>
+    <div class="awards-box fx">
+      <div class="award" *ngFor="let award of awards" [class.isAwarded]="award.awarded">
+        <img src="./assets/images/awards/award-{{award.difficulty}}.png">
+        <h1>{{ award.awardName }}</h1>
+        <span>{{ award.description }}</span>
+      </div>
+    </div>
+  </div>
+</div>

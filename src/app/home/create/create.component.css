@@ -50,6 +50,9 @@ textarea {
 .inputTitle {
     display: block;
 }
+.meals {
+    background: linear-gradient(90deg, #FF527A, #FF9575);
+}
 
 @keyframes heading {
     from {opacity: 0.6;}

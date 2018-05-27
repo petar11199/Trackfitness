@@ -1,4 +1,3 @@
-import { AwardService } from './award.service';
 import { NavigationComponent } from './navigation/navigation.component';
 import { HeaderComponent } from './header/header.component';
 import { NgModule } from '@angular/core';
@@ -28,8 +27,7 @@ import { AwardPopupComponent } from './award-popup/award-popup.component';
     TimePipe
   ],
   providers: [
-    TimePipe,
-    AwardService
+    TimePipe
   ]
 })
 export class SharedModule { }

@@ -13,7 +13,7 @@
     <div class="heading">
       <div class="menu fx">
         <img class="back-btn" src="./assets/images/home/arrow.png" routerLink="/home">
-        <button class="btn btn-new" routerLink="/home/create" *ngIf="exercises.length !== 0">+ Add new</button>
+        <button class="btn btn-new" routerLink="/home/exercises/create" *ngIf="exercises.length !== 0">+ Add new</button>
       </div>
       <div class="card fx">
         <div class="left-side-card">
@@ -44,7 +44,7 @@
 
     <div *ngIf="exercises.length === 0 && !isLoading; else show" class="emptyScreen fx fx--center fx--fdc">
       <h1>You don't have any exercises added :(</h1>
-      <button class="btn" routerLink="/home/create">+ Add them now</button>
+      <button class="btn" routerLink="/home/exercises/create">+ Add them now</button>
     </div>
 
 

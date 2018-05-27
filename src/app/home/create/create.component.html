@@ -4,19 +4,26 @@
   <app-navigation></app-navigation>
 
   <div class="wrapper">
-    <div class="heading">
-      <img class="back-btn" src="./assets/images/home/arrow.png" routerLink="/home/exercises">
-      <h1>Create new exercise</h1>
+    <div class="heading" [class.meals]="mealsPage">
+      <img *ngIf="!mealsPage" class="back-btn" src="./assets/images/home/arrow.png" routerLink="/home/exercises">
+      <img *ngIf="mealsPage" class="back-btn" src="./assets/images/home/arrow.png" routerLink="/home/meals">
+      <h1 *ngIf="!mealsPage">Create new exercise</h1>
+      <h1 *ngIf="mealsPage">Create new meal plan</h1>
     </div>
 
     <div class="form">
       <form [formGroup]="exerciseForm">
-        <span class="inputTitle">Name</span>
-        <input placeholder="Name" type="text" formControlName="name" maxlength="20">
+        <span *ngIf="!mealsPage" class="inputTitle">Exercise name</span>
+        <span *ngIf="mealsPage" class="inputTitle">Meal name</span>
+        <input *ngIf="!mealsPage" placeholder="Exercise name" type="text" formControlName="name" maxlength="20">
+        <input *ngIf="mealsPage" placeholder="Meal name" type="text" formControlName="name" maxlength="20">
 
-        <span class="inputTitle">Time</span>
-        <input class="time" placeholder="Time" type="number" formControlName="time" min="1" max="600">
-        <span class="time-min">min</span>
+        <span *ngIf="!mealsPage" class="inputTitle">Time</span>
+        <span *ngIf="mealsPage" class="inputTitle">Calories</span>
+        <input *ngIf="!mealsPage" class="time" placeholder="Time" type="number" formControlName="time" min="1" max="600">
+        <input *ngIf="mealsPage" class="time" placeholder="Calories" type="number" formControlName="time" min="1" max="600">
+        <span *ngIf="!mealsPage" class="time-min">min</span>
+        <span *ngIf="mealsPage" class="time-min">cal</span>
   
         <span class="inputTitle">Short description</span>
         <input placeholder="Short description" type="email" formControlName="shortDesc" maxlength="40">

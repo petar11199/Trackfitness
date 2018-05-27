@@ -11,6 +11,7 @@ import { HomeService } from './../home.service';
 })
 export class CreateComponent implements OnInit, OnDestroy {
 
+  mealsPage: boolean;
   isLoading: boolean;
   timeValue: number;
   exerciseForm: FormGroup;
@@ -28,6 +29,10 @@ export class CreateComponent implements OnInit, OnDestroy {
       longDesc: [''],
       time: ['', [Validators.required]]
     })
+
+    if(this.router.url === '/home/meals/create') {
+      this.mealsPage = true;
+    }
   }
 
   addNewExercise(formValue) {
@@ -35,10 +40,17 @@ export class CreateComponent implements OnInit, OnDestroy {
     let userId: string;
     this.subscription = this.homeService.getUserId().subscribe(res => {
       userId = res;
-      this.homeService.addNewExercise(userId, formValue)
-        .then(() => {
-          this.router.navigate(['/home/exercises'])
-        })
+      if(this.mealsPage) {
+        this.homeService.addNew(userId, formValue, 'meals')
+          .then(() => {
+            this.router.navigate(['/home/meals']);
+          })
+      } else {
+        this.homeService.addNew(userId, formValue, 'exercises')
+          .then(() => {
+            this.router.navigate(['/home/exercises'])
+          })      
+        }
     })
   }
 

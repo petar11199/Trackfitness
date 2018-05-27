@@ -17,22 +17,22 @@ export class HomeService {
     });
   }
 
-  getExercisesList(userId) {
-    return this.db.list(`users/${userId}/exercises`).snapshotChanges().map(changes => {
+  getList(userId, type) {
+    return this.db.list(`users/${userId}/${type}`).snapshotChanges().map(changes => {
       return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
     });
   }
 
-  addNewExercise(userId, formValue) {
-    return this.db.list(`users/${userId}/exercises`).push(formValue);
+  addNew(userId, formValue, type) {
+    return this.db.list(`users/${userId}/${type}`).push(formValue);
   }
 
-  deleteExercise(userId, key) {
-    return this.db.list(`users/${userId}/exercises`).remove(key);
+  delete(userId, key, type) {
+    return this.db.list(`users/${userId}/${type}`).remove(key);
   }
 
-  finishExercise(userId, key) {
-    return this.db.object(`users/${userId}/exercises/${key}`).update({finished: Number(1)});
+  finish(userId, key, type) {
+    return this.db.object(`users/${userId}/${type}/${key}`).update({finished: Number(1)});
   }
 
 }

@@ -11,13 +11,15 @@ import { ExercisesComponent } from './exercises/exercises.component';
 import { RouterModule } from '@angular/router';
 import { CreateComponent } from './create/create.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MealsComponent } from './meals/meals.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     HomeGoalsComponent,
     ExercisesComponent,
-    CreateComponent
+    CreateComponent,
+    MealsComponent
   ],
   imports: [
     CommonModule,

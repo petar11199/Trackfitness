@@ -1,0 +1,49 @@
+.wrapper {
+    border-radius: 10px;
+    margin: 40px;
+    margin-left: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.title h1 {
+    margin: 0;
+    font-weight: 400;
+}
+.title span {
+    color: #26D1FE;
+}
+
+.awards-box {
+    background: white;
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 40px;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+.award {
+    border-radius: 10px;
+    width: 20%;
+    min-width: 200px;
+    padding: 10px;
+    text-align: center;
+    opacity: 0.3;
+}
+.award img {
+    width: 100px;
+    transition: 400ms ease;
+}
+
+.award h1 {
+    font-size: 20px;
+    margin: 0;
+}
+.award span {
+    margin: 0;
+    margin-top: 10px;
+}
+
+.isAwarded {
+    opacity: 1;
+}
