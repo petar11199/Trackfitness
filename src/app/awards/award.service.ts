@@ -44,7 +44,7 @@ export class AwardService {
         awarded: false
       },
       {
-        finishedMeal: null,
+        finishedMeal: 1000,
         awardName: 'Hungry',
         description: 'Eat 1000 calories',
         difficulty: 'easy',

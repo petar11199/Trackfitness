@@ -12,30 +12,28 @@
             <div class="card fx" routerLink="/home/exercises">
                 <div class="left-side-card">
                     <img src="./assets/images/home/weight.png">
-                    <div>
-                        <h1>0 Exercises</h1>
-                        <span>0 hour 0 minutes</span>
+                    <div *ngIf="isLoading">
+                        <h1 class="loading"></h1>
                     </div>
-                </div>
-                <div class="right-side-card fx fx--center">
-                    <div class="count">
-                        <span>0</span>
-                        <span>/0</span>
+                    <div *ngIf="!isLoading">
+                        <h1 *ngIf="exercises?.length > 1">{{ exercises?.length }} Exercises</h1>
+                        <h1 *ngIf="exercises?.length === 1">{{ exercises?.length }} Exercise</h1>
+                        <h1 *ngIf="!exercises?.length">No Exercises</h1>
+                        <span>2 hour minimum</span>
                     </div>
                 </div>
             </div>
             <div class="card fx" routerLink="/home/meals">
                 <div class="left-side-card">
                     <img src="./assets/images/home/food.png">
-                    <div>
-                        <h1>0 Meals</h1>
-                        <span>0.0 cal</span>
+                    <div *ngIf="isLoading">
+                        <h1 class="loading"></h1>
                     </div>
-                </div>
-                <div class="right-side-card fx fx--center">
-                    <div class="count">
-                        <span>0</span>
-                        <span>/0</span>
+                    <div *ngIf="!isLoading">
+                        <h1 *ngIf="meals?.length > 1">{{ meals?.length }} Meals</h1>
+                        <h1 *ngIf="meals?.length === 1">{{ meals?.length }} Meal</h1>
+                        <h1 *ngIf="!meals?.length">No Meals</h1>
+                        <span>4 meals minimum</span>
                     </div>
                 </div>
             </div>
@@ -47,12 +45,7 @@
                         <span>8 hour minimum</span>
                     </div>
                 </div>
-                <div class="right-side-card fx fx--center">
-                    <div class="count">
-                        <span>0</span>
-                        <span>/8</span>
-                    </div>
-                </div>
+
             </div>
         </div>
         <div class="analytics">

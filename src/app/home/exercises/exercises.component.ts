@@ -67,7 +67,6 @@ export class ExercisesComponent implements OnInit, OnDestroy {
           if (res.find(r => (r.key === award.awardName))) { }
           else {
             this.awardService.addAward(this.userId, award.awardName).then(() => {
-              console.log(award)
               award.awarded = true;
               this.awardName = award.awardName;
               this.awardDesc = award.description;

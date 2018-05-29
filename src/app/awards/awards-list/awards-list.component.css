@@ -17,10 +17,9 @@
 .awards-box {
     background: white;
     border-radius: 10px;
-    width: 100%;
     margin-top: 40px;
     padding: 20px;
-    flex-wrap: wrap;
+    overflow-x: scroll;
 }
 .award {
     border-radius: 10px;
@@ -45,5 +44,21 @@
 }
 
 .isAwarded {
+    opacity: 1;
+}
+
+.filters {
+    margin-top: 10px;
+}
+.title-filter {
+    margin-top: 40px;
+}
+.btn {
+    width: 150px;
+    opacity: 0.5;
+    margin-bottom: 10px;
+    margin-right: 5px;
+}
+.filterSelected {
     opacity: 1;
 }

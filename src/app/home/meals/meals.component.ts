@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 })
 export class MealsComponent implements OnInit, OnDestroy {
 
+  sumOfEatenCals: number = 0;
   subscription: Subscription;
   meals: any[] = [];
   userId: string;
@@ -36,6 +37,7 @@ export class MealsComponent implements OnInit, OnDestroy {
         this.numOfCals = 0;   // reseting sum
         this.numbOfFinished = 0; // reseting sum
         this.meals.forEach(element => {
+          this.sumOfEatenCals =+ element.time;
           this.numOfCals += element.time;
           if (element.finished) {
             this.numbOfFinished += element.finished;
@@ -67,7 +69,18 @@ export class MealsComponent implements OnInit, OnDestroy {
           if (res.find(r => (r.key === award.awardName))) { }
           else {
             this.awardService.addAward(this.userId, award.awardName).then(() => {
-              console.log(award)
+              award.awarded = true;
+              this.awardName = award.awardName;
+              this.awardDesc = award.description;
+              this.awarded = true;
+            })
+          }
+        }
+
+        if (this.numOfCals > award.finishedMeal) {
+          if (res.find(r => (r.key === award.awardName))) { }
+          else {
+            this.awardService.addAward(this.userId, award.awardName).then(() => {
               award.awarded = true;
               this.awardName = award.awardName;
               this.awardDesc = award.description;
