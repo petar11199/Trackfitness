@@ -82,6 +82,7 @@ textarea {
     .profile {
         flex-direction: column;
         width: auto;
+        margin: 40px 20px;
     }
     .personal-info {
         width: auto;

@@ -79,7 +79,7 @@
 }
 
 @media only screen and (max-width: 750px) {
-    .responsive {
+    .responsiveAuth {
         flex-direction: column;
     }
     .right-side,

@@ -114,3 +114,18 @@ textarea {
     from {opacity: 1;}
     to {opacity: 0;}
 }
+
+@media only screen and (max-width: 900px) {
+    .responsive {
+        flex-direction: column;
+        padding: 0 40px;
+    }
+}
+@media only screen and (max-width: 700px) {
+    .responsive {
+        padding: 0 20px;
+    }
+    .analytics {
+        height: 150px !important;
+    }
+}

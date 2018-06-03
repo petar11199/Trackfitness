@@ -103,13 +103,3 @@
 .right-side-card .count span:first-child {
     font-size: 30px;
 }
-
-@media only screen and (max-width: 900px) {
-    .responsive {
-        flex-direction: column;
-        padding: 0 40px;
-    }
-    .analytics {
-        height: 150px;
-    }
-}

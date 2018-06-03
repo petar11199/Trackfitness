@@ -88,7 +88,7 @@ img:last-child {
     display: none;
     width: 50px;
     height: 50px;
-    position: fixed;
+    position: absolute;
     top: 0;
     right: 40px;
     border-radius: 4px;

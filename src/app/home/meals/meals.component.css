@@ -164,10 +164,3 @@
     50% {opacity: 0.3;}
     100% {opacity: 0;}
 }
-
-@media only screen and (max-width: 900px) {
-    .responsive {
-        flex-direction: column;
-        padding: 0 40px;
-    }
-}
