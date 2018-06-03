@@ -16,6 +16,7 @@ Currently working:
 - Finish exercise / meal
 - Listing with all the exercises / meals;
 - Awards;
+- Awards filter;
 - Responsive (2 stages);
 
 ... more coming soon.
@@ -28,5 +29,6 @@ Not yet added:
 - Notifications;
 - Sleep time;
 - Schedule;
+- More award filters;
 
 
