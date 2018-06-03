@@ -100,3 +100,47 @@ img {
     margin-right: 25px;
 }
 
+.responsive {
+    display: none;
+    background: white;
+}
+
+@media only screen and (max-width: 900px) {
+    .responsive {
+        display: flex;
+        flex-direction: row;
+        margin-top: 20px;
+        border-radius: 10px;
+        position: relative;
+        align-content: center;
+    }
+    .responsive .personal-info {
+        flex-direction: row;
+        align-items: center;
+        padding: 10px;
+        padding-left: 20px;
+    }
+    .responsive .name {
+        margin: 0;
+    }
+    .edit {
+        top: 20px;
+        background: #49A5F6;
+        color: white;
+        width: 120px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+    }
+    .navigation {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .responsive {
+        display: none;
+    }
+}

@@ -62,3 +62,10 @@
 .filterSelected {
     opacity: 1;
 }
+
+@media only screen and (max-width: 900px) {
+    .responsive {
+        flex-direction: column;
+        padding: 0 40px;
+    }
+}

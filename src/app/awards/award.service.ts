@@ -11,14 +11,14 @@ export class AwardService {
       {
         finished: 1,
         awardName: 'The beginning',
-        description: 'Complete one excersise',
+        description: 'Complete one excercise',
         difficulty: 'easy',
         awarded: false
       },
       {
         finished: 5,
         awardName: 'Five of a kind',
-        description: 'Complete five excersises',
+        description: 'Complete five excercises',
         difficulty: 'medium',
         awarded: false
       },

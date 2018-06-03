@@ -3,8 +3,35 @@
     <span>TRACK</span>
     <span>FITNESS</span>
   </div>
+  <div class="menus">
+    <span routerLink="/home" routerLinkActive="active">Home</span>
+    <span routerLink="/awards" routerLinkActive="active">Awards</span>
+    <span>Schedule</span>
+  </div>
   <div class="settings fx">
     <img src="./assets/images/header/bell.png">
     <img src="./assets/images/header/logout.png" (click)="logOut()">
   </div>
+  <div class="burger">
+    <span></span>
+  </div>
+  
+  <nav>
+    <ul class="main">
+      <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+      <li><a routerLink="/awards" routerLinkActive="active">Awards</a></li>
+      <li><a>Schedule</a></li>
+      <li><a routerLink="/profile" routerLinkActive="active">Profile</a></li>
+    </ul>
+
+    <div class="social">
+    </div>
+
+    <ul class="sub">
+      <li><a>Notifications (0)</a></li>
+      <li><a (click)="logOut()">LogOut</a></li>
+    </ul>
+  </nav>
+  
+  <div class="overlay"></div>
 </div>

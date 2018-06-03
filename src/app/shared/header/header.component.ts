@@ -12,6 +12,17 @@ export class HeaderComponent implements OnInit {
   constructor(private authService: AuthService, private router:Router) { }
 
   ngOnInit() {
+    let burger = document.querySelector(".burger");
+    let overlay = document.querySelector(".overlay");
+    let nav = document.querySelector("nav");
+
+    burger.addEventListener("click", (e) => {
+      e.preventDefault();
+      document.body.classList.toggle("clicked");
+      burger.classList.toggle("clicked");
+      overlay.classList.toggle("show");
+      nav.classList.toggle("show");
+    });
   }
 
   logOut() {

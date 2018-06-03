@@ -79,9 +79,10 @@
     overflow-y: scroll;
 }
 .box {
+    flex-grow: 1;
     position: relative;
-    width: 29%;
-    margin: 2%;
+    min-width: 150px;
+    margin: 20px;
     height: auto;
     border: 1px solid rgb(226, 226, 226);
     border-radius: 10px;
@@ -158,4 +159,11 @@
     0% {opacity: 1;}
     50% {opacity: 0.3;}
     100% {opacity: 0;}
+}
+
+@media only screen and (max-width: 900px) {
+    .responsive {
+        flex-direction: column;
+        padding: 0 40px;
+    }
 }

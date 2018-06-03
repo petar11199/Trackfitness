@@ -77,3 +77,16 @@
     opacity: 1;
     cursor: pointer;
 }
+
+@media only screen and (max-width: 750px) {
+    .responsive {
+        flex-direction: column;
+    }
+    .right-side,
+    .left-side {
+        width: auto;
+    }
+    .login-box {
+        min-width: 80%;
+    }
+}
