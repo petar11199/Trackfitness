@@ -1,6 +1,5 @@
 <div class="navigation fx fx--fdc">
   <div class="personal-info fx fx--fdc">
-    <span routerLink="/profile" class="edit">EDIT</span>
     <div *ngIf="isLoading; else loaded">
       <div class="image loading-img"></div>
       <h1 class="name loading"></h1>
@@ -39,9 +38,9 @@
       <img src="./assets/images/navigation/goals.png">
       <span>Awards</span>
     </div>
-    <div class="navigation-link fx">
-      <img src="./assets/images/navigation/schedule.png" routerLinkActive="active">
-      <span>Schedule</span>
+    <div class="navigation-link fx" routerLink="/profile" routerLinkActive="active">
+      <img src="./assets/images/navigation/schedule.png">
+      <span>Profile</span>
     </div>
   </div>
   <div class="welcome">
@@ -52,7 +51,7 @@
 
 <div class="responsive fx fx--fdc">
   <div class="personal-info fx fx--fdc">
-    <span routerLink="/profile" class="edit">EDIT</span>
+    <span routerLink="/profile" class="edit">Profile</span>
     <div *ngIf="isLoading; else loaded">
       <div class="image loading-img"></div>
       <h1 class="name loading"></h1>

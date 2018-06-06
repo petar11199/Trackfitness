@@ -23,12 +23,9 @@ Currently working:
 
 Known issues:
 - Award for calories not counting the way it should;
-- Visual routes home/home;
 
 Not yet added:
 - Notifications;
-- Sleep time;
-- Schedule;
-- More award filters;
+- Guards;
 
 

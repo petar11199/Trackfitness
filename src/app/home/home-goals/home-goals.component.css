@@ -29,6 +29,7 @@
     margin-bottom: 5px;
     padding: 20px;
     cursor: pointer;
+    position: relative;
 }
 .card:nth-child(1) {
     background: linear-gradient(90deg, #4FACFE, #00F2FE);
@@ -97,9 +98,6 @@
     font-size: 18px;
     color: white;
 }
-.right-side-card .count {
-    color: white;
-}
-.right-side-card .count span:first-child {
-    font-size: 30px;
+.noCursor {
+    cursor: default;
 }

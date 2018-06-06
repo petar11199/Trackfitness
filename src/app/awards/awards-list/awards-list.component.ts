@@ -39,35 +39,48 @@ export class AwardsListComponent implements OnInit {
     });
   }
 
-  filter(i: number) {
+  filter(i) {
     this.activeFilter = i;
-    if (i === 1) {
-      this.awards = this.awardsTemp;
-    }
-    else if (i === 2) {
-      this.awards = [];
-      this.awardsTemp.forEach(element => {
-        if(element.awarded === true) {
-          this.awards.push(element);
-        }
-      });
-    }
-    else if (i === 3) {
-      this.awards = [];
-      this.awardsTemp.forEach(element => {
-        if(element.finished >= 1  && element.awarded === false || 
-          element.finishedMeal >= 1  && element.awarded === false ) {
-          this.awards.push(element);
-        }
-      });
-    }
-    else if (i === 4) {
-      this.awards = [];
-      this.awardsTemp.forEach(element => {
-        if(element.finished === null) {
-          this.awards.push(element);
-        }
-      });
+
+    switch(i) {
+      case 1:
+        this.awards = this.awardsTemp;
+        break;
+      case 2:
+        this.awards = [];
+        this.awardsTemp.forEach(element => {
+          if(element.awarded === true) {
+            this.awards.push(element);
+          }
+        });
+        break;
+      case 3:
+        this.awards = [];
+        this.awardsTemp.forEach(element => {
+          if(element.finished >= 1  && element.awarded === false || 
+            element.finishedMeal >= 1  && element.awarded === false ) {
+            this.awards.push(element);
+          }
+        });
+        break;
+      case 4:
+        this.awards = [];
+        this.awardsTemp.forEach(element => {
+          if(element.finished === null) {
+            this.awards.push(element);
+          }
+        });
+        break;
+      case i:
+        this.awards = [];
+        this.awardsTemp.forEach(element => {
+          if(element.difficulty === i) {
+            this.awards.push(element);
+          }
+        });
+        break;
+      default:
+        this.awards = this.awardsTemp;
     }
   }
 

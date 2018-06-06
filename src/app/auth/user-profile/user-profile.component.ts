@@ -50,9 +50,11 @@ export class UserProfileComponent implements OnInit {
     this.db.object('/users/' + this.userId)
       .update(formValue)
       .then(() => {
+        this.personalInfo.markAsPristine();
+        this.successful = true;
         setTimeout(() => {
-          this.successful = true
-        }, 500);
+          this.successful = false
+        }, 2000);
       })
   }
 }

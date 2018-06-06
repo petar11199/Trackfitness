@@ -11,8 +11,8 @@ import { ExercisesComponent } from './exercises/exercises.component';
 const homeRoutes: Routes = [
   { 
     path: '', component: HomeComponent, children: [
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home', component: HomeGoalsComponent },
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: 'dashboard', component: HomeGoalsComponent },
       { path: 'exercises', component: ExercisesComponent },
       { path: 'exercises/create', component: CreateComponent },
       { path: 'meals', component: MealsComponent },

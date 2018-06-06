@@ -16,13 +16,21 @@
       </div>
     </div>
     <div class="title title-filter">
-        <span>Filters</span>
-      </div>
+      <span>Filters</span>
+    </div>
     <div class="filters">
-        <button class="btn" (click)="filter(1)" [class.filterSelected]="activeFilter === 1">All</button>
-        <button class="btn" (click)="filter(2)" [class.filterSelected]="activeFilter === 2">Awarded</button>
-        <button class="btn" (click)="filter(3)" [class.filterSelected]="activeFilter === 3">Not awarded</button>
-        <button class="btn" (click)="filter(4)" [class.filterSelected]="activeFilter === 4">Unavaiable</button>
+      <button class="btn" (click)="filter(1)" [class.filterSelected]="activeFilter === 1">All</button>
+      <button class="btn" (click)="filter(2)" [class.filterSelected]="activeFilter === 2">Awarded</button>
+      <button class="btn" (click)="filter(3)" [class.filterSelected]="activeFilter === 3">Not awarded</button>
+      <button class="btn" (click)="filter(4)" [class.filterSelected]="activeFilter === 4">Unavaiable</button>
+    </div>
+    <div class="title title-filter">
+      <span>Difficulty</span>
+    </div>
+    <div class="filters">
+      <button class="btn" (click)="filter('easy')" [class.filterSelected]="activeFilter === 'easy'">Easy</button>
+      <button class="btn" (click)="filter('medium')" [class.filterSelected]="activeFilter === 'medium'">Medium</button>
+      <button class="btn" (click)="filter('hard')" [class.filterSelected]="activeFilter === 'hard'">Hard</button>
     </div>
   </div>
 </div>

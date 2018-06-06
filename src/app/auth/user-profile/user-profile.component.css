@@ -1,12 +1,15 @@
 .profile {
-    width: 80%;
+    width: 100%;
     background: white;
     border-radius: 10px;
-    margin: 40px;
+    margin: 40px 40px 0 0;
     box-shadow: 10px 10px 10px rgba(237, 239, 241, 0.3);
     position: relative;
+    height: 100%;
 }
-
+form {
+    width: 100%;
+}
 .personal-info {
     padding: 25px;
     width: 40%;
@@ -18,9 +21,8 @@
     margin: 20px 0 0 0;
 }
 .age {
-    font-size: 16px;
-    font-weight: 400;
-    opacity: 0.5;
+    width: 150px;
+    display: block;
 }
 .image {
     width: 60px;
@@ -30,6 +32,7 @@
 
 .input-info {
     padding: 20px;
+    width: 100%;
 }
 .infoTitle {
     margin-bottom: 20px;
@@ -54,13 +57,21 @@ textarea {
 .btn {
     width: 100px;
 }
+
 .success {
     font-size: 13px;
     color: #FF527A;
+    animation: success 2000ms both;
 }
 .success img {
     width: 15px;
     height: 15px;
+}
+
+@keyframes success {
+    0% {opacity: 1;}
+    50% {opacity: 1;}
+    100% {opacity: 0;}
 }
 
 .loading {

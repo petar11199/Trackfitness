@@ -1,73 +1,65 @@
 <app-header></app-header>
 
-<div class="profile fx">
-  <div class="personal-info fx fx--fdc">
-    <div *ngIf="isLoading; else loaded">
-      <div class="image loading-img"></div>
-      <h1 class="name loading"></h1>
-      <span class="age loading"></span>
-    </div>
-    <ng-template #loaded>
-      <img class="image" src="./assets/images/navigation/profile.png">
-      <h1 class="name">{{ user?.name }}</h1>
-      <span class="age">{{ user?.gender }}, {{ user?.age }} years</span>
-    </ng-template>
-  </div>
-  <div class="input-info">
-    <span class="infoTitle">Edit your personal information here</span>
-    <ng-template #loadedInputs>
-    <form [formGroup]="personalInfo">
-      <span class="inputTitle">Name</span>
-      <input placeholder="Name" type="text" formControlName="name">
+<div class="fx responsive">
+  <app-navigation></app-navigation>
 
-      <span class="inputTitle">Email</span>
-      <input placeholder="Email" type="email" formControlName="email">
+  <div class="profile fx">
+    <div class="input-info">
+      <span class="infoTitle">Edit your personal information here</span>
+      <ng-template #loadedInputs>
+      <form [formGroup]="personalInfo">
+        <span class="inputTitle">Name</span>
+        <input placeholder="Name" type="text" formControlName="name">
 
-      <span class="inputTitle">Age</span>
-      <input placeholder="Age" type="number" formControlName="age" max="100">
+        <span class="inputTitle">Email</span>
+        <input placeholder="Email" type="email" formControlName="email">
 
-      <span class="inputTitle">Short bio</span>
-      <textarea formControlName="bio" rows="5"></textarea>
-      <div class="fx">
-        <div class="inLine">
-          <span class="inputTitle">Your height</span>
-          <input type="number" formControlName="height">
+        <span class="inputTitle">Age</span>
+        <input class="age" placeholder="Age" type="number" formControlName="age" max="100">
+
+        <span class="inputTitle">Short bio</span>
+        <textarea formControlName="bio" rows="5"></textarea>
+        <div class="fx">
+          <div class="inLine">
+            <span class="inputTitle">Your height</span>
+            <input type="number" formControlName="height">
+          </div>
+          <div>
+            <span class="inputTitle">Your weight</span>
+            <input type="number" formControlName="weight">
+          </div>
         </div>
-        <div>
-          <span class="inputTitle">Your weight</span>
-          <input type="number" formControlName="weight">
+        <div class="fx fx--between">
+          <button [disabled]="!personalInfo.dirty" class="btn" (click)="updateUser(personalInfo.value)">Save</button>
+          <div *ngIf="successful" class="success fx fx--center">
+            <img src="./assets/images/navigation/success.png">
+            <span>Successfuly updated info!</span>
+          </div>
         </div>
-      </div>
-      <div class="fx fx--between">
-        <button class="btn" (click)="updateUser(personalInfo.value)">Save</button>
-        <div *ngIf="successful" class="success fx fx--center">
-          <img src="./assets/images/navigation/success.png">
-          <span>Successfuly updated info!</span>
-        </div>
-      </div>
-    </form>
-    </ng-template>
+      </form>
+      </ng-template>
 
-    <div *ngIf="isLoading; else loadedInputs">
-      <span class="inputTitle">Name</span>
-      <input class="loading">
+      <div *ngIf="isLoading; else loadedInputs">
+        <span class="inputTitle">Name</span>
+        <input class="loading">
 
-      <span class="inputTitle">Email</span>
-      <input class="loading">
+        <span class="inputTitle">Email</span>
+        <input class="loading">
 
-      <span class="inputTitle">Age</span>
-      <input class="loading">
+        <span class="inputTitle">Age</span>
+        <input class="loading">
 
-      <span class="inputTitle">Short bio</span>
-      <textarea rows="5" class="loading"></textarea>
-      <div class="fx">
-        <div class="inLine">
-          <span class="inputTitle">Your height</span>
-          <input class="loading">
-        </div>
-        <div>
-          <span class="inputTitle">Your weight</span>
-          <input class="loading">
+        <span class="inputTitle">Short bio</span>
+        <textarea rows="5" class="loading"></textarea>
+        <div class="fx">
+          <div class="inLine">
+            <span class="inputTitle">Your height</span>
+            <input class="loading">
+          </div>
+          <div>
+            <span class="inputTitle">Your weight</span>
+            <input class="loading">
+          </div>
         </div>
       </div>
     </div>

@@ -3,7 +3,6 @@ import { AwardsComponent } from './awards.component';
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-
 const awardsRoutes: Routes = [
   { 
     path: '', component: AwardsComponent, children: [
