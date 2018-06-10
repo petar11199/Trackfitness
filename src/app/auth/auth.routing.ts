@@ -1,3 +1,4 @@
+import { AuthGuard } from './auth.guard';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { LoginComponent } from './login/login.component';
 import { ModuleWithProviders } from '@angular/core';
@@ -14,7 +15,7 @@ const authRoutes: Routes = [
       { path: '', redirectTo: 'login', pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
-      { path: 'profile', component: UserProfileComponent }
+      { path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard] }
     ]
   },
 ];

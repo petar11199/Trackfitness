@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class AuthService {
@@ -56,6 +57,13 @@ export class AuthService {
         console.log(error)
         throw error
       });
+  }
+
+  private stateSource = new BehaviorSubject(false);
+  currentState = this.stateSource.asObservable();
+
+  denied(state: boolean) {
+    this.stateSource.next(state)
   }
  
   signOut(): void {

@@ -103,6 +103,7 @@ img {
 .responsive {
     display: none;
     background: white;
+    padding: 0;
 }
 
 @media only screen and (max-width: 900px) {

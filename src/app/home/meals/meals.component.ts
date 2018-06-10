@@ -10,7 +10,6 @@ import { Subscription } from 'rxjs';
 })
 export class MealsComponent implements OnInit, OnDestroy {
 
-  sumOfEatenCals: number = 0;
   subscription: Subscription;
   meals: any[] = [];
   userId: string;
@@ -20,6 +19,7 @@ export class MealsComponent implements OnInit, OnDestroy {
   awardDesc: string;
   awardName: string;
 
+  sumOfEatenCals: number = 0;
   numbOfFinished: number;
   numOfCals: number;
   deletedItem: any;
@@ -37,7 +37,6 @@ export class MealsComponent implements OnInit, OnDestroy {
         this.numOfCals = 0;   // reseting sum
         this.numbOfFinished = 0; // reseting sum
         this.meals.forEach(element => {
-          this.sumOfEatenCals =+ element.time;
           this.numOfCals += element.time;
           if (element.finished) {
             this.numbOfFinished += element.finished;
@@ -61,35 +60,42 @@ export class MealsComponent implements OnInit, OnDestroy {
 
   finishExcersise(key) {
     let awards = this.awardService.getAllAwards();
-
-    this.homeService.finish(this.userId, key, 'meals');
-    this.subscription = this.awardService.getAwards(this.userId).subscribe(res => {
-      awards.forEach(award => {
-        if (this.numbOfFinished === award.finishedMeal) {
-          if (res.find(r => (r.key === award.awardName))) { }
-          else {
-            this.awardService.addAward(this.userId, award.awardName).then(() => {
-              award.awarded = true;
-              this.awardName = award.awardName;
-              this.awardDesc = award.description;
-              this.awarded = true;
-            })
+    this.homeService.finish(this.userId, key, 'meals')
+      .then(() => {
+        this.meals.forEach(element => {
+          if (element.finished) {
+            this.sumOfEatenCals += element.time;
           }
-        }
+        });
 
-        if (this.numOfCals > award.finishedMeal) {
-          if (res.find(r => (r.key === award.awardName))) { }
-          else {
-            this.awardService.addAward(this.userId, award.awardName).then(() => {
-              award.awarded = true;
-              this.awardName = award.awardName;
-              this.awardDesc = award.description;
-              this.awarded = true;
-            })
-          }
-        }
-      });
-    });
+        this.subscription = this.awardService.getAwards(this.userId).subscribe(res => {
+          awards.forEach(award => {
+            if (this.numbOfFinished === award.finishedMeal) {
+              if (res.find(r => (r.key === award.awardName))) { }
+              else {
+                this.awardService.addAward(this.userId, award.awardName).then(() => {
+                  award.awarded = true;
+                  this.awardName = award.awardName;
+                  this.awardDesc = award.description;
+                  this.awarded = true;
+                })
+              }
+            }
+
+            if (this.sumOfEatenCals >= award.finishedMeal) {
+              if (res.find(r => (r.key === award.awardName))) { }
+              else {
+                this.awardService.addAward(this.userId, award.awardName).then(() => {
+                  award.awarded = true;
+                  this.awardName = award.awardName;
+                  this.awardDesc = award.description;
+                  this.awarded = true;
+                })
+              }
+            }
+          });
+        });
+      })
   }
 
   receivedMessage($event) {

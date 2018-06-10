@@ -1,3 +1,4 @@
+import { AuthGuard } from './auth.guard';
 import { SharedModule } from './../shared/shared.module';
 import { AuthComponent } from './auth.component';
 import { authRouting } from './auth.routing';
@@ -26,7 +27,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     UserProfileComponent
   ],
   providers: [
-    AuthService
+    AuthService,
+    AuthGuard
   ]
 })
 export class AuthModule { }

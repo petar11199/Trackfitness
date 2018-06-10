@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   isLoading: boolean;
   signinForm: FormGroup;
   error: string;
+  denied: boolean;
 
   constructor(
     private db: AngularFireDatabase, 
@@ -26,6 +27,8 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required]],
       password: ['', [Validators.required]],
     })
+    this.authService.currentState.subscribe(state => this.denied = state);
+    console.log(this.denied)
   }
 
   login(formValue) {

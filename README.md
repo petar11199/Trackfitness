@@ -18,14 +18,14 @@ Currently working:
 - Awards;
 - Awards filter;
 - Responsive (2 stages);
+- Guards (can't access pages if not logged in);
 
 ... more coming soon.
 
 Known issues:
-- Award for calories not counting the way it should;
+- none yet;
 
 Not yet added:
 - Notifications;
-- Guards;
 
 
