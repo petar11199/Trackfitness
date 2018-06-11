@@ -14,6 +14,7 @@
         <h1>{{ award.awardName }}</h1>
         <span>{{ award.description }}</span>
       </div>
+      <span class="empty" *ngIf="awards.length === 0">Nothing to show here</span>
     </div>
     <div class="title title-filter">
       <span>Filters</span>

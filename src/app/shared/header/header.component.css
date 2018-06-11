@@ -48,7 +48,7 @@ img:last-child {
     }
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 620px) {
     .menus,
     .settings {
         display: none;

@@ -9,7 +9,7 @@
       </div>
       <div class="right-side fx fx--center fx--fdc">
         <form [formGroup]="registerForm" class="login-form fx fx--fdc">
-            <input placeholder="Name" type="text" formControlName='name'>
+            <input placeholder="Name" type="text" formControlName='name' maxlength="20">
             <input placeholder="Age" type="number" formControlName='age' min="1">
 
             <span class="inputTitle">Gender</span>

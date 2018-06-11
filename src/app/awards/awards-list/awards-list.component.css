@@ -62,3 +62,7 @@
 .filterSelected {
     opacity: 1;
 }
+
+.empty {
+    opacity: 0.3;
+}

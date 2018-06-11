@@ -126,6 +126,7 @@
 }
 .finished-text {
     font-size: 14px;
+    width: 100px;
     color: #39FB90;
 }
 .text-icon {
