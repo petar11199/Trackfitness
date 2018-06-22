@@ -28,4 +28,4 @@ Known issues:
 Not yet added:
 - Notifications;
 
-
+CREDIT: app design: https://www.behance.net/gallery/65431121/Fitness-tracker-app-dashboard-interaction
