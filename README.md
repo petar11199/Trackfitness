@@ -1,5 +1,4 @@
 Link / firebase: https://track-fitness-d8788.firebaseapp.com/login
-WORK IN PROGRESS.
 
 Creating fully working app. 
 Frontend in Angular, backend in Firebase.
@@ -19,13 +18,10 @@ Currently working:
 - Awards filter;
 - Responsive (2 stages);
 - Guards (can't access pages if not logged in);
-
-... more coming soon.
+- Notifications and welcome screen (local storage closing)
 
 Known issues:
 - none yet;
 
-Not yet added:
-- Notifications;
 
 CREDIT: app design: https://www.behance.net/gallery/65431121/Fitness-tracker-app-dashboard-interaction
