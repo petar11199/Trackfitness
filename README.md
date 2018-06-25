@@ -21,7 +21,7 @@ Currently working:
 - Notifications and welcome screen (local storage closing)
 
 Known issues:
-- Hamburger menu visiable on welcome screen;
+- Hamburger menu visible on welcome screen;
 
 
 CREDIT: app design: https://www.behance.net/gallery/65431121/Fitness-tracker-app-dashboard-interaction
