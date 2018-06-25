@@ -1,3 +1,4 @@
+import { AuthService } from './../../auth/auth.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
@@ -9,18 +10,18 @@ import { HomeService } from './../home.service';
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css']
 })
-export class CreateComponent implements OnInit, OnDestroy {
+export class CreateComponent implements OnInit {
 
   mealsPage: boolean;
   isLoading: boolean;
   timeValue: number;
   exerciseForm: FormGroup;
-  subscription: Subscription;
 
   constructor(
-    private fb: FormBuilder, 
+    private fb: FormBuilder,
     private homeService: HomeService,
-    private router: Router) {}
+    private router: Router,
+    private authService: AuthService) { }
 
   ngOnInit() {
     this.exerciseForm = this.fb.group({
@@ -30,33 +31,25 @@ export class CreateComponent implements OnInit, OnDestroy {
       time: ['', [Validators.required]]
     })
 
-    if(this.router.url === '/home/meals/create') {
+    if (this.router.url === '/home/meals/create') {
       this.mealsPage = true;
     }
   }
 
   addNewExercise(formValue) {
     this.isLoading = true;
-    let userId: string;
-    this.subscription = this.homeService.getUserId().subscribe(res => {
-      userId = res;
-      if(this.mealsPage) {
-        this.homeService.addNew(userId, formValue, 'meals')
-          .then(() => {
-            this.router.navigate(['/home/meals']);
-          })
-      } else {
-        this.homeService.addNew(userId, formValue, 'exercises')
-          .then(() => {
-            this.router.navigate(['/home/exercises'])
-          })      
-        }
-    })
-  }
+    let userId = this.authService.currentUserId();
 
-  ngOnDestroy() {
-    if(this.subscription) {
-      this.subscription.unsubscribe();
+    if (this.mealsPage) {
+      this.homeService.addNew(userId, formValue, 'meals')
+        .then(() => {
+          this.router.navigate(['/home/meals']);
+        })
+    } else {
+      this.homeService.addNew(userId, formValue, 'exercises')
+        .then(() => {
+          this.router.navigate(['/home/exercises'])
+        })
     }
   }
 

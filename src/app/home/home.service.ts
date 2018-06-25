@@ -1,21 +1,12 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 
 @Injectable()
 export class HomeService {
 
   constructor(
-    private db: AngularFireDatabase,
-    private afAuth: AngularFireAuth) { }
+    private db: AngularFireDatabase) { }
 
-  getUserId() {
-    return this.afAuth.authState.map(user => {
-      if(user) {
-        return user.uid;
-      }
-    });
-  }
 
   getList(userId, type) {
     return this.db.list(`users/${userId}/${type}`).snapshotChanges().map(changes => {
@@ -32,7 +23,7 @@ export class HomeService {
   }
 
   finish(userId, key, type) {
-    return this.db.object(`users/${userId}/${type}/${key}`).update({finished: Number(1)});
+    return this.db.object(`users/${userId}/${type}/${key}`).update({ finished: Number(1) });
   }
 
 }

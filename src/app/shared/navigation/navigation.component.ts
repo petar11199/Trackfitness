@@ -1,8 +1,7 @@
+import { AuthService } from './../../auth/auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { AuthService } from './../../auth/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
 
 @Component({
   selector: 'app-navigation',
@@ -10,23 +9,19 @@ import { Observable } from 'rxjs/Rx';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
-  
+
   userId: string;
   user;
   isLoading: boolean;
   onlyName: string;
 
   constructor(
-    private authService: AuthService,
     private db: AngularFireDatabase,
-    private afAuth: AngularFireAuth
-  ) { }
+    private authService: AuthService) { }
 
   ngOnInit() {
     this.isLoading = true;
-    this.afAuth.authState.subscribe(user => {
-      if(user) this.userId = user.uid;
-    })
+    this.userId = this.authService.currentUserId();
 
     this.db.object(`/users`).valueChanges().subscribe(
       res => {

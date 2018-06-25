@@ -10,7 +10,7 @@ import { AuthGuard } from '../auth/auth.guard';
 
 
 const homeRoutes: Routes = [
-  { 
+  {
     path: '', component: HomeComponent, children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: HomeGoalsComponent, canActivate: [AuthGuard] },
@@ -18,7 +18,8 @@ const homeRoutes: Routes = [
       { path: 'exercises/create', component: CreateComponent, canActivate: [AuthGuard] },
       { path: 'meals', component: MealsComponent, canActivate: [AuthGuard] },
       { path: 'meals/create', component: CreateComponent, canActivate: [AuthGuard] }
-  ]},
+    ]
+  },
 ];
 
 export const homeRouting: ModuleWithProviders = RouterModule.forChild(homeRoutes);

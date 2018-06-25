@@ -1,5 +1,6 @@
+import { AuthService } from './../../auth/auth.service';
 import { AwardService } from './../../awards/award.service';
-import { Component, OnInit, OnDestroy, Testability } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HomeService } from './../home.service';
 import { Subscription } from 'rxjs';
 
@@ -26,25 +27,24 @@ export class MealsComponent implements OnInit, OnDestroy {
 
   constructor(
     private homeService: HomeService,
-    private awardService: AwardService) { }
+    private awardService: AwardService,
+    private authService: AuthService) { }
 
   ngOnInit() {
     this.isLoading = true;
-    this.subscription = this.homeService.getUserId().subscribe(res => {
-      this.userId = res;
-      this.homeService.getList(this.userId, 'meals').subscribe(res => {
-        this.meals = Object.values(res);
-        this.numOfCals = 0;   // reseting sum
-        this.numbOfFinished = 0; // reseting sum
-        this.meals.forEach(element => {
-          this.numOfCals += element.time;
-          if (element.finished) {
-            this.numbOfFinished += element.finished;
-          }
-        })
-      });
-      this.isLoading = false;
+    this.userId = this.authService.currentUserId();
+    this.subscription = this.homeService.getList(this.userId, 'meals').subscribe(res => {
+      this.meals = Object.values(res);
+      this.numOfCals = 0;   // reseting sum
+      this.numbOfFinished = 0; // reseting sum
+      this.meals.forEach(element => {
+        this.numOfCals += element.time;
+        if (element.finished) {
+          this.numbOfFinished += element.finished;
+        }
+      })
     });
+    this.isLoading = false;
   }
 
   deleteExcersise(key, index) {
@@ -69,7 +69,7 @@ export class MealsComponent implements OnInit, OnDestroy {
         });
 
         this.subscription = this.awardService.getAwards(this.userId).subscribe(res => {
-          awards.forEach(award => {
+          for (let award of awards) {
             if (this.numbOfFinished === award.finishedMeal) {
               if (res.find(r => (r.key === award.awardName))) { }
               else {
@@ -93,7 +93,7 @@ export class MealsComponent implements OnInit, OnDestroy {
                 })
               }
             }
-          });
+          };
         });
       })
   }

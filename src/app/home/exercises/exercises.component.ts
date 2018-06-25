@@ -1,3 +1,4 @@
+import { AuthService } from './../../auth/auth.service';
 import { AwardService } from './../../awards/award.service';
 import { Component, OnInit, OnDestroy, Testability } from '@angular/core';
 import { HomeService } from './../home.service';
@@ -25,27 +26,26 @@ export class ExercisesComponent implements OnInit, OnDestroy {
 
   constructor(
     private homeService: HomeService,
-    private awardService: AwardService) { }
+    private awardService: AwardService,
+    private authService: AuthService) { }
 
   ngOnInit() {
     this.isLoading = true;
-    this.subscription = this.homeService.getUserId().subscribe(res => {
-      this.userId = res;
-      this.homeService.getList(this.userId, 'exercises').subscribe(res => {
-        this.exercises = Object.values(res);
-        this.numOfMinutes = 0;   // reseting sum
-        this.numbOfFinished = 0; // reseting sum
-        this.exercises.forEach(element => {
-          this.numOfMinutes += element.time;
-          if (element.finished) {
-            this.numbOfFinished += element.finished;
-          }
-        })
-      });
-      this.isLoading = false;
-    });
-  }
+    this.userId = this.authService.currentUserId();
 
+    this.subscription = this.homeService.getList(this.userId, 'exercises').subscribe(res => {
+      this.exercises = Object.values(res);
+      this.numOfMinutes = 0;   // reseting sum
+      this.numbOfFinished = 0; // reseting sum
+      this.exercises.forEach(element => {
+        this.numOfMinutes += element.time;
+        if (element.finished) {
+          this.numbOfFinished += element.finished;
+        }
+      })
+    });
+    this.isLoading = false;
+  }
   deleteExcersise(key, index) {
     if (this.deletedItem === index) {
       this.deletedItem = null;

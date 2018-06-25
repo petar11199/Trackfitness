@@ -8,7 +8,24 @@
     <span routerLink="/awards" routerLinkActive="active">Awards</span>
   </div>
   <div class="settings fx">
-    <img src="./assets/images/header/bell.png">
+    <div class="notifications">
+      <img src="./assets/images/header/bell.png" (click)="openNotif = !openNotif; removeIcon()">
+      <div *ngIf="!removeNotif">
+        <span *ngIf="notifications" class="notification-count fx fx--center">
+          {{ notifications?.length }}
+        </span>
+      </div>
+      <div *ngIf="openNotif" class="notifications-container">
+        <div *ngFor="let notification of notifications">
+          <div class="notifications-item">
+            <a href="{{notification?.link}}">
+              <h1>{{ notification?.title }}</h1>
+              <h2>{{ notification?.description }}</h2>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
     <img src="./assets/images/header/logout.png" (click)="logOut()">
   </div>
   <div class="burger">
@@ -26,7 +43,7 @@
     </div>
 
     <ul class="sub">
-      <li><a>Notifications (0)</a></li>
+      <li><a>Notifications ({{ notifications?.length }})</a></li>
       <li><a (click)="logOut()">LogOut</a></li>
     </ul>
   </nav>

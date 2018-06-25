@@ -5,10 +5,10 @@
 
   <div class="wrapper">
     <div class="heading" [class.meals]="mealsPage">
-      <img *ngIf="!mealsPage" class="back-btn" src="./assets/images/home/arrow.png" routerLink="/home/exercises">
-      <img *ngIf="mealsPage" class="back-btn" src="./assets/images/home/arrow.png" routerLink="/home/meals">
-      <h1 *ngIf="!mealsPage">Create new exercise</h1>
-      <h1 *ngIf="mealsPage">Create new meal plan</h1>
+      <img *ngIf="!mealsPage" class="back-btn slideInAnim" src="./assets/images/home/arrow.png" routerLink="/home/exercises">
+      <img *ngIf="mealsPage" class="back-btn slideInAnim" src="./assets/images/home/arrow.png" routerLink="/home/meals">
+      <h1 *ngIf="!mealsPage" class="slideInAnim">Create new exercise</h1>
+      <h1 *ngIf="mealsPage" class="slideInAnim">Create new meal plan</h1>
     </div>
 
     <div class="form">
@@ -24,14 +24,14 @@
         <input *ngIf="mealsPage" class="time" placeholder="Calories" type="number" formControlName="time" min="1" max="600">
         <span *ngIf="!mealsPage" class="time-min">min</span>
         <span *ngIf="mealsPage" class="time-min">cal</span>
-  
+
         <span class="inputTitle">Short description</span>
         <input placeholder="Short description" type="email" formControlName="shortDesc" maxlength="40">
-  
+
         <span class="inputTitle">Long description</span>
         <textarea formControlName="longDesc" rows="5"></textarea>
         <div class="fx fx--between">
-          <button [disabled]="exerciseForm.invalid || isLoading" class="btn" (click)="addNewExercise(exerciseForm.value)" >Save</button>
+          <button [disabled]="exerciseForm.invalid || isLoading" class="btn" (click)="addNewExercise(exerciseForm.value)">Save</button>
         </div>
       </form>
     </div>

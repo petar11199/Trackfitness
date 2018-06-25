@@ -10,6 +10,11 @@ html,body {
     box-sizing: border-box;
 }
 
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
 .fx {
     display: flex;
 }
@@ -99,17 +104,27 @@ textarea {
     background-color: rgba(85, 85, 85, 0.6);
  }
 
- .loading {
+.loading {
     background: rgba(0,0,0,0.1);
     width: 100%;
     height: 32px;
     animation: loading 1.3s ease infinite;
     color:rgba(0,0,0,0) !important;
 }
-.loading-img {
-    background: rgba(0,0,0,0.1);
-    animation: loading 1.3s ease infinite;
+
+.slideInAnim {
+    animation: slideIn 900ms cubic-bezier(.25,.1,.25,1) forwards;
+    opacity: 0;
 }
+.slideInAnim:nth-child(2) {
+    animation-delay: 300ms;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(10px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
 @keyframes loading {
     from {opacity: 1;}
     to {opacity: 0;}

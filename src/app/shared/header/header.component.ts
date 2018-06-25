@@ -1,6 +1,8 @@
 import { AuthService } from './../../auth/auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +11,19 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router:Router) { }
+  @Input() awardName: string;
+  @Input() awardDesc: string;
+
+  notifications: any;
+  userId: string;
+  removeNotif: boolean;
+  openNotif: boolean;
+
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private afAuth: AngularFireAuth,
+    private db: AngularFireDatabase) { }
 
   ngOnInit() {
     let burger = document.querySelector(".burger");
@@ -23,6 +37,23 @@ export class HeaderComponent implements OnInit {
       overlay.classList.toggle("show");
       nav.classList.toggle("show");
     });
+
+    this.userId = this.authService.currentUserId();
+
+    setTimeout(() => {
+      if (localStorage.getItem('opened') === this.userId) {
+        this.removeNotif = true;
+      }
+
+      this.db.list(`users/${this.userId}/notifications`).valueChanges().subscribe(res => {
+        this.notifications = res;
+      })
+    }, 1000);
+  }
+
+  removeIcon() {
+    localStorage.setItem('opened', this.userId);
+    this.removeNotif = true;
   }
 
   logOut() {

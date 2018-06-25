@@ -1,3 +1,4 @@
+import { AuthService } from './../../auth/auth.service';
 import { Subscription } from 'rxjs';
 import { HomeService } from './../home.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
@@ -15,23 +16,22 @@ export class HomeGoalsComponent implements OnInit, OnDestroy {
   exercises: any[];
   boxes = ['exercises', 'meals'];
 
-  constructor(private homeService: HomeService) { }
+  constructor(private homeService: HomeService, private authService: AuthService) { }
 
   ngOnInit() {
     this.isLoading = true;
-    this.subscription = this.homeService.getUserId().subscribe(userId => {
-      this.boxes.forEach(element => {
-        this.subscription = this.homeService.getList(userId, element).subscribe(res => {
-          if(element === 'exercises') {
-            this.exercises = Object.values(res);
-          }
-          else if (element === 'meals') {
-            this.meals = Object.values(res);
-          }
-        });
+    let userId = this.authService.currentUserId();
+    this.boxes.forEach(element => {
+      this.subscription = this.homeService.getList(userId, element).subscribe(res => {
+        if (element === 'exercises') {
+          this.exercises = Object.values(res);
+        }
+        else if (element === 'meals') {
+          this.meals = Object.values(res);
+        }
       });
-      this.isLoading = false;
     });
+    this.isLoading = false;
   }
 
   ngOnDestroy() {

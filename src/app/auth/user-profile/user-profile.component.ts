@@ -11,11 +11,11 @@ import { AngularFireDatabase } from 'angularfire2/database';
 })
 export class UserProfileComponent implements OnInit {
 
-  successful: boolean;
+  personalInfo: FormGroup;
   userId: string;
   user: Observable<any[]>;
-  personalInfo: FormGroup;
-  isLoading;
+  successful: boolean;
+  isLoading: boolean;
 
   constructor(
     private db: AngularFireDatabase,
@@ -28,27 +28,25 @@ export class UserProfileComponent implements OnInit {
     this.personalInfo = this.fb.group({
       name: [''],
       age: [''],
-      email: [{value: null, disabled: true}],
+      email: [{ value: null, disabled: true }],
       bio: [''],
       height: [''],
       weight: ['']
     })
 
     this.afAuth.authState.subscribe(user => {
-      if(user) this.userId = user.uid;
+      if (user) this.userId = user.uid;
     })
 
-    this.db.object(`/users`).valueChanges().subscribe(
-      res => {
+    this.db.object(`/users`).valueChanges().subscribe(res => {
         this.user = res[this.userId];
         this.personalInfo.patchValue(this.user);
         this.isLoading = false;
       })
   }
 
-  updateUser(formValue) {
-    this.db.object('/users/' + this.userId)
-      .update(formValue)
+  updateUser(formValue: HTMLFormElement) {
+    this.db.object('/users/' + this.userId).update(formValue)
       .then(() => {
         this.personalInfo.markAsPristine();
         this.successful = true;

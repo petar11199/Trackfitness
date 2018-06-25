@@ -9,24 +9,25 @@
       </div>
       <div class="right-side fx fx--center fx--fdc">
         <form [formGroup]="registerForm" class="login-form fx fx--fdc">
-            <input placeholder="Name" type="text" formControlName='name' maxlength="20">
-            <input placeholder="Age" type="number" formControlName='age' min="1">
+          <input placeholder="Name" type="text" formControlName='name' maxlength="20">
+          <input placeholder="Age" type="number" formControlName='age' min="1">
 
-            <span class="inputTitle">Gender</span>
-            <div class="fx">
-              <input type="radio" formControlName='gender' id="male" name="gender" value="male">
-              <label for="male">Male</label>
-              <input type="radio" formControlName='gender' id="female" name="gender" value="female">
-              <label for="female">Female</label>
-            </div>
+          <span class="inputTitle">Gender</span>
+          <div class="fx">
+            <input type="radio" formControlName='gender' id="male" name="gender" value="male">
+            <label for="male">Male</label>
+            <input type="radio" formControlName='gender' id="female" name="gender" value="female">
+            <label for="female">Female</label>
+          </div>
 
-            <input placeholder="Email" type="email" formControlName='email'>
-            <input placeholder="Password" type="password" formControlName='password'>
-            <input placeholder="Password repeat" type="password" formControlName='passwordRepeat'>
+          <input placeholder="Email" type="email" formControlName='email'>
+          <input placeholder="Password" type="password" formControlName='password'>
+          <input placeholder="Password repeat" type="password" formControlName='passwordRepeat'>
           <button class="btn" [disabled]="registerForm.invalid" (click)="register(registerForm.value)">REGISTER</button>
         </form>
         <div class="register">
-          Have account? <span routerLink="/login">Login</span>
+          Have account?
+          <span routerLink="/login">Login</span>
         </div>
       </div>
     </div>

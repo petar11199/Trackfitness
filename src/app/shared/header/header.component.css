@@ -41,6 +41,57 @@ img:last-child {
     color: #CA657A !important;
 }
 
+.notifications {
+  position: relative;
+  z-index: 9999;
+}
+
+.notification-count {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  font-size: 10px;
+  background: #49A5F6;
+  width: 15px;
+  height: 15px;
+  color: white;
+  border-radius: 50%;
+}
+.notifications-container:after {
+  content: '';
+  width: 20px;
+  height: 20px;
+  background: white;
+  transform: rotate(45deg);
+  position: absolute;
+  top: -8px;
+  right: 4px;
+}
+.notifications-container {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background: white;
+  padding: 20px;
+  padding-bottom: 0;
+  width: 300px;
+  box-shadow: 10px 10px 10px rgba(237, 239, 241, 0.3);
+}
+.notifications-item {
+  margin-bottom: 20px;
+}
+.notifications-item:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+.notifications-item h1 {
+  font-size: 13px;
+}
+.notifications-item h2 {
+  font-size: 11px;
+  font-weight: 300;
+}
+
 
 @media only screen and (max-width: 900px) {
     .menus {

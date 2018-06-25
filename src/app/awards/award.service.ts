@@ -6,7 +6,7 @@ export class AwardService {
 
   private awards: any;
 
-  constructor(private db: AngularFireDatabase) { 
+  constructor(private db: AngularFireDatabase) {
     this.awards = [
       {
         finished: 1,
@@ -74,5 +74,4 @@ export class AwardService {
     obj[award] = true;
     return this.db.object(`users/${userId}/awards`).update(obj);
   }
-
 }

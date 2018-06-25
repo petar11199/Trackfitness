@@ -1,7 +1,6 @@
 <div class="navigation fx fx--fdc">
   <div class="personal-info fx fx--fdc">
     <div *ngIf="isLoading; else loaded">
-      <div class="image loading-img"></div>
       <h1 class="name loading"></h1>
       <span class="age loading"></span>
     </div>
@@ -17,14 +16,12 @@
       <span *ngIf="!isLoading && !user?.height">n/a</span>
       <span *ngIf="!isLoading">{{ user?.height }}</span>
       <span *ngIf="isLoading" class="loading"></span>
-      <!-- <span><b>185</b> cm</span> -->
     </div>
     <div class="info-box fx fx--fdc fx--center">
       <h1 class="height-title">WEIGHT</h1>
       <span *ngIf="!isLoading && !user?.weight">n/a</span>
       <span *ngIf="!isLoading">{{ user?.weight }}</span>
       <span *ngIf="isLoading" class="loading"></span>
-      <!-- <span><b>176</b> kg</span> -->
     </div>
   </div>
   <hr>
@@ -52,7 +49,6 @@
   <div class="personal-info fx fx--fdc">
     <span routerLink="/profile" class="edit">Profile</span>
     <div *ngIf="isLoading; else loaded">
-      <div class="image loading-img"></div>
       <h1 class="name loading"></h1>
       <span class="age loading"></span>
     </div>
@@ -69,14 +65,12 @@
       <span *ngIf="!isLoading && !user?.height">n/a</span>
       <span *ngIf="!isLoading">{{ user?.height }}</span>
       <span *ngIf="isLoading" class="loading"></span>
-      <!-- <span><b>185</b> cm</span> -->
     </div>
     <div class="info-box fx fx--fdc fx--center">
       <h1 class="height-title">WEIGHT</h1>
       <span *ngIf="!isLoading && !user?.weight">n/a</span>
       <span *ngIf="!isLoading">{{ user?.weight }}</span>
       <span *ngIf="isLoading" class="loading"></span>
-      <!-- <span><b>176</b> kg</span> -->
     </div>
   </div>
 </div>

@@ -12,8 +12,8 @@ export class TimePipe implements PipeTransform {
     minutes = value % 60;
     hours = (value - minutes) / 60;
 
-    return hours.toString() + " hour(s) " + (minutes <10 ? "0" : "") + minutes.toString();
-    
- }
+    return hours.toString() + " hour(s) " + (minutes < 10 ? "0" : "") + minutes.toString();
+
+  }
 
 }

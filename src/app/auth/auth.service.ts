@@ -14,23 +14,18 @@ export class AuthService {
       if (auth) {
         this.router.navigate(['/home/dashboard']);
       }
+      else {
+        this.router.navigate(['/login']);
+      }
     });
+  }
+
+  currentUserId(): string {
+    return (this.authState !== null) ? this.authState.uid : ''
   }
 
   get isUserAnonymousLoggedIn(): boolean {
     return (this.authState !== null) ? this.authState.isAnonymous : false
-  }
-
-  get currentUserId(): string {
-    return (this.authState !== null) ? this.authState.uid : ''
-  }
-
-  get currentUserName(): string {
-    return this.authState['email']
-  }
-
-  get currentUser(): any {
-    return (this.authState !== null) ? this.authState : null;
   }
 
   get isUserEmailLoggedIn(): boolean {
@@ -47,7 +42,6 @@ export class AuthService {
         this.authState = user
       })
       .catch(error => {
-        console.log(error)
         throw error
       });
   }
@@ -58,7 +52,6 @@ export class AuthService {
         this.authState = user
       })
       .catch(error => {
-        console.log(error)
         throw error
       });
   }
