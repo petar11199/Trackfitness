@@ -1,3 +1,6 @@
+**!  OLD PROJECT  !**
+--
+
 Link / firebase: https://track-fitness-d8788.firebaseapp.com/login
 
 Creating fully working app. 
